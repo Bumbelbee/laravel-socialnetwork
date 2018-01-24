@@ -40,6 +40,9 @@
                         </form>
                     @else
                         <div class="profile-follow">
+                          <div class="profile-follow-b1 pull-left" style="margin-right: 10px ">
+                            <a class="btn btn-primary" href="/direct-messages/show/{{$user->id}}">Write a message</a>
+                          </div>
                             <div class="profile-follow-b1 pull-left" style="margin-right: 10px">
                                 {!! sHelper::followButton($user->id, Auth::id(), '.profile-follow-b1') !!}
                             </div>
