@@ -110,9 +110,9 @@ class sHelper
             $likes = PostLike::where('seen', 0)->with('user')->join('posts', 'posts.id', '=', 'post_likes.post_id')
                 ->where('posts.user_id', $user->id)->where('user_id', '!=', $user->id)->select('post_likes.*')->orderBy('id', 'DESC');
             if ($likes->count() > 0){
-                foreach ($likes->get() as $likne){
+                foreach ($likes->get() as $like){
                     $notifications[] = [
-                        'url' => url('/post/'.$likne->post_id),
+                        'url' => url('/post/'.$like->post_id),
                         'icon' => 'fa-heart',
                         'text' => $user->name.' liked your post.'
                     ];

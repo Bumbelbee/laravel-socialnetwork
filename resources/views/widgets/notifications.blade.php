@@ -16,6 +16,7 @@
                 <li>
                     <a href="{{ $notification['url'] }}">
                         <i class="fa {{ $notification['icon'] }}"></i> {{ $notification['text'] }}
+
                     </a>
                 </li>
             @endforeach

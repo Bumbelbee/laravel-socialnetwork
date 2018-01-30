@@ -41,7 +41,7 @@
         @if ($can_send_message)
             <textarea class="form-control" rows="1" placeholder="Your message.." onkeyup="sendMessage(event)"></textarea>
         @else
-            <div class="alert alert-danter">You can't send new message anymore.</div>
+            <div class="alert alert-danter">You can't send message to this user.</div>
         @endif
     </form>
 </div>

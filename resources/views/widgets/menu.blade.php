@@ -21,7 +21,7 @@
         <li class="list-group-item">
             <a href="{{ url('/direct-messages') }}" class="menu-dm">
                 <i class="fa fa-commenting"></i>
-                Direct Messages
+                Messages
             </a>
         </li>
     </ul>

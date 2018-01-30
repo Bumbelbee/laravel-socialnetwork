@@ -11,7 +11,7 @@
 
 
                 <div class="content-page-title">
-                    <i class="fa fa-commenting"></i> Direct Messages
+                    <i class="fa fa-commenting"></i> Chat of Messages
                 </div>
 
 
@@ -19,7 +19,7 @@
 
                 <div class="new-message-button">
                     <button class="btn btn-success btn-sm" type="button" data-toggle="modal" data-target="#userListModal">
-                        <i class="fa fa-commenting"></i> New Message
+                        <i class="fa fa-commenting"></i> Add People
                     </button>
                 </div>
                 <div class="dm">

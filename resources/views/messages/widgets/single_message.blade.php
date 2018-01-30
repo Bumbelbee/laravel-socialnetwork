@@ -1,4 +1,4 @@
-<div class="message @if($message->sender_user_id == $user->id){{ 'message-right' }}@endif" id="chat-message-{{ $message->id }}">
+<div class="message @if($message->sender_user_id != $user->id){{ 'message-right' }}@endif" id="chat-message-{{ $message->id }}">
     <div class="text">
         {{ $message->message }}
     </div>
