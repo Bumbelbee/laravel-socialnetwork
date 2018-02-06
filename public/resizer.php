@@ -1,6 +1,2 @@
 <?php
-
-
-
 include("timthumb.php");
-?>

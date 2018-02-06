@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                Discover your surroundings. Share your hobbies. Meet new people with Around.kim!
+                Kel doske suilowobuz! Ozunun tagdyryn tap!
             </div>
         </div>
     </div>

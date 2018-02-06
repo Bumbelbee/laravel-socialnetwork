@@ -71,6 +71,7 @@ class sHelper
     }
 
     public static function notifications(){
+      
         if (self::$notifications == null){
             $notifications = [];
 

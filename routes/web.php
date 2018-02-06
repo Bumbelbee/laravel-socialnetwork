@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/resetpassword', function () {
+    return view('auth.passwords.reset');
+});
+
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', function () {
