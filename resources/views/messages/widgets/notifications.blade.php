@@ -1,6 +1,11 @@
 <a href="#" class="dropdown-toggle parent" data-toggle="dropdown" role="button" aria-expanded="false">
     @if (count($user_list) > 0)
         <span class="badge badge-notify">{{ count($user_list) }}</span>
+
+        <audio id = 'messageSound'>
+          <source src="{{ asset('audio/mess.mp3')}}">
+          <source src="{{ asset('audio/mess.ogg')}}">
+        </audio>
     @endif
     <i class="fa fa-commenting"></i>
 </a>

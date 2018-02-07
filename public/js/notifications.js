@@ -10,7 +10,7 @@ $(function() {
 
         messageNotifications();
 
-    }, 100000);
+    }, 15000);
 
 
 
@@ -30,7 +30,8 @@ function messageNotifications(){
         success: function (response) {
             if (response.code == 200) {
                 $('.direct-messages-notification').html(response.html);
-                
+
+                document.getElementById('messageSound').play();
             }
         },
         error: function () {

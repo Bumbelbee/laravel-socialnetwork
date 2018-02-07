@@ -72,6 +72,7 @@
 
                             <img src="{{ Auth::user()->getPhoto() }}" alt="" />
                             {{ Auth::user()->name }} <span class="caret"></span>
+                            
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -109,7 +110,7 @@
 
     <div class="container">
         @include('widgets.footer')
-    </div>
+     </div>
 </div>
 <div class="loading-page">
     <img src="{{ asset('images/rolling.gif') }}" alt="">

@@ -26,7 +26,16 @@
                     </div>
                     <div class="profile-text">
                         <h2>{{ $user->name }}</h2>
-                        <h4>{{ '@'.$user->username }}</h4>
+                        {{-- <h4>{{ '@'.$user->username }}</h4> --}}
+
+                          @if($user->isOnline())
+                            <i class="fa fa-dot-circle-o" style = 'color:green;'></i> Online
+                          @else
+                            <div class="fa fa-dot-circle-o" style = 'color:red;'></div> Offline
+                            <div class="">last seen {{$user->last_sing_in_at}}</div>
+                          @endif
+
+
                         @if($can_see)
                             <small>{{ Auth::user()->distance($user) }}</small>
                         @endif

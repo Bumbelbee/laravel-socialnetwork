@@ -321,6 +321,7 @@ class ComposerStaticInitd2065ad0fdd3a04f0a0f7590b17de4fb
     );
 
     public static $classMap = array (
+        'AddSignInAtToUsers' => __DIR__ . '/../..' . '/database/migrations/2018_02_07_113522_add_sign_in_at_to_users.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
