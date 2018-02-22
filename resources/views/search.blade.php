@@ -13,6 +13,7 @@
                 </ul>
 
                 <div class="tab-content">
+                   <!-- search posts -->
                     <div id="posts" class="tab-pane fade in active">
 
 
@@ -38,6 +39,7 @@
 
 
                     </div>
+                    <!-- search people -->
                     <div id="users" class="tab-pane fade">
 
                         @if($users->count() == 0)

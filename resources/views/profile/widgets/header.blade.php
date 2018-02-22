@@ -29,15 +29,15 @@
                         {{-- <h4>{{ '@'.$user->username }}</h4> --}}
 
                           @if($user->isOnline())
-                            <i class="fa fa-dot-circle-o" style = 'color:green;'></i> Online
+                            <i class="fa fa-dot-circle-o" style = 'color:lime;'></i> online
                           @else
-                            <div class="fa fa-dot-circle-o" style = 'color:red;'></div> Offline
+                            <div class="fa fa-dot-circle-o" style = 'color:red;'></div> offline
                             <div class="">last seen {{$user->last_sing_in_at}}</div>
                           @endif
 
 
                         @if($can_see)
-                            <small>{{ Auth::user()->distance($user) }}</small>
+                            {{-- <small>{{ Auth::user()->distance($user) }}</small> --}}
                         @endif
                     </div>
                     @if($my_profile)
