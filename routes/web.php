@@ -10,12 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/resetpassword', function () {
-    return view('auth.passwords.reset');
-});
 
-
+// auth
 Route::group(['middleware' => 'guest'], function () {
+
     Route::get('/', function () {
         return view('layouts.guest');
     });
@@ -31,6 +29,7 @@ Route::post('/settings', array(
     'uses' => 'SettingsController@update'
 ));
 
+Route::get('/sms','MessagesController@sender');
 
 // Posts
 Route::get('/posts/list', 'PostsController@fetch');

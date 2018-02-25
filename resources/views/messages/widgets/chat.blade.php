@@ -4,7 +4,10 @@
         <img class="img-circle" src="{{ $friend->getPhoto(50, 50) }}">
         <div class="detail">
             <strong>{{ $friend->name }}</strong>
-            {{ '@'.$friend->username }}
+             @include('flash')
+        @if($user->id != $friend->id)
+            
+        @endif
         </div>
     </a>
     <a class="btn btn-default btn-xs btn-remove" onclick="deleteChat({{ $friend->id }})" data-toggle="tooltip" data-placement="bottom" title="Delete Chat">
@@ -36,12 +39,17 @@
     </div>
 </div>
 <div class="message-write">
-    <form id="form-message-write">
+    <form id="form-message-write" method="GET" action="/sms">
+
         <input type="hidden" name="user_id" value="{{ $friend->id }}">
+        <input type="hidden" name="user_phone" value="{{ $friend->phone}}">
+        <input type="hidden" name="user_name" value="{{ $user->name}}">
+        <input type="hidden" name="receiver_name" value="{{ $friend->name}}">
         @if ($can_send_message)
-            <textarea class="form-control" rows="1" placeholder="Your message.." onkeyup="sendMessage(event)"></textarea>
+            <textarea class="form-control" name ='body' rows="1" placeholder="Write a message" onkeyup="sendMessage(event)" value ="{{ Session::get('success') }}"></textarea>
         @else
             <div class="alert alert-danter">You can't send message to this user.</div>
         @endif
+        <button class="btn btn-primary right">Send sms</button>
     </form>
 </div>

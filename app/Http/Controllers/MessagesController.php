@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Nexmo\Laravel\Facade\Nexmo;
 use App\Models\User;
 use App\Models\UserDirectMessage;
 use DB;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Response;
 use View;
+use Session;
 
 class MessagesController extends Controller
 {
@@ -23,6 +25,7 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+ 
     public function index($id = null)
     {
 
@@ -40,6 +43,8 @@ class MessagesController extends Controller
 
         return view('messages.index', compact('user', 'user_list', 'show', 'id'));
     }
+
+ 
 
 
     public function chat(Request $request){
@@ -277,5 +282,21 @@ class MessagesController extends Controller
 
         return Response::json($response);
     }
+
+            public function sender(Request $request){
+                $phone = $request->user_phone;
+                $user = $request->user_name;
+                $receiver = $request->receiver_name;
+                $body = "from @$user << $request->body >>";
+                 Nexmo::message()->send([
+                'to'   => $phone,
+                'from' => "doskeler.kg",
+                'text' => $body
+                ]);
+            $request->session()->flash('success',"sms was successfully send to $receiver");
+            Session::flash('success',"sms was successfully send to $receiver");
+            \Session::flash('success',"sms was successfully send to $receiver");
+            return redirect('/direct-messages')->with('success',"sms was successfully send to $receiver");
+            }
 
 }

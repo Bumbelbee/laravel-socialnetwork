@@ -10,8 +10,9 @@
             <div class="col-md-9">
 
 
-                <div class="content-page-title">
+                <div class="content-page-title">    
                     <i class="fa fa-commenting"></i> Chat of Messages
+                         @include('flash')
                 </div>
 
 

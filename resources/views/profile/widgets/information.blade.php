@@ -147,7 +147,7 @@
                             <div class="form-group">
                                 <label>Phone:</label>
                                 <div class="input-group">
-                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-mobile"></i></span>
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-mobile"></i> 996</span>
                                     <input type="text" class="form-control" name="phone" value="{{ $user->phone }}" aria-describedby="basic-addon1">
                                 </div>
                             </div>
