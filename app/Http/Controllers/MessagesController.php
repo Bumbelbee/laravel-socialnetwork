@@ -287,16 +287,15 @@ class MessagesController extends Controller
                 $phone = $request->user_phone;
                 $user = $request->user_name;
                 $receiver = $request->receiver_name;
-                $body = "from @$user << $request->body >>";
+                $body = "from @$user - '$request->body'";
                  Nexmo::message()->send([
                 'to'   => $phone,
                 'from' => "doskeler.kg",
                 'text' => $body
                 ]);
-            $request->session()->flash('success',"sms was successfully send to $receiver");
-            Session::flash('success',"sms was successfully send to $receiver");
-            \Session::flash('success',"sms was successfully send to $receiver");
-            return redirect('/direct-messages')->with('success',"sms was successfully send to $receiver");
+            
+            \Session::flash('success',"sms was successfully send to @$receiver");
+            return redirect('/direct-messages');
             }
 
 }

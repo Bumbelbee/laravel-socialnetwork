@@ -4,11 +4,19 @@
         <img class="img-circle" src="{{ $friend->getPhoto(50, 50) }}">
         <div class="detail">
             <strong>{{ $friend->name }}</strong>
-             @include('flash')
-        @if($user->id != $friend->id)
             
-        @endif
-        </div>
+             {{-- check online user --}}
+                {{-- {{$user->isOnline()}}
+                @if($friend->id)
+                     @if($user->isOnline())
+                            <i class="fa fa-dot-circle-o" style = 'color:lime;'></i> online
+                          @else
+                            <div class="fa fa-dot-circle-o" style = 'color:red;'></div> offline
+                            <div class="">last seen {{$user->last_sing_in_at}}</div>
+                          @endif
+                @endif --}}
+                {{-- end of --}}
+        </div>  
     </a>
     <a class="btn btn-default btn-xs btn-remove" onclick="deleteChat({{ $friend->id }})" data-toggle="tooltip" data-placement="bottom" title="Delete Chat">
         <i class="fa fa-times"></i>
@@ -45,11 +53,13 @@
         <input type="hidden" name="user_phone" value="{{ $friend->phone}}">
         <input type="hidden" name="user_name" value="{{ $user->name}}">
         <input type="hidden" name="receiver_name" value="{{ $friend->name}}">
+        <button class="btn btn-primary pull-right" style= "margin-top: -10px;">Send sms</button>
+       
         @if ($can_send_message)
             <textarea class="form-control" name ='body' rows="1" placeholder="Write a message" onkeyup="sendMessage(event)" value ="{{ Session::get('success') }}"></textarea>
         @else
             <div class="alert alert-danter">You can't send message to this user.</div>
         @endif
-        <button class="btn btn-primary right">Send sms</button>
     </form>
 </div>
+@include('flash')
