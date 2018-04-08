@@ -50,7 +50,10 @@ Route::get('/groups', 'GroupController@index');
 Route::get('/group/{id}', 'GroupController@group');
 Route::get('/group/{id}/stats', 'GroupController@stats');
 
-
+//community
+Route::resource('/community','CommunityController');
+Route::get('/commfollow','CommunityController@follow');
+Route::get('/communfollow','CommunityController@unfollow');
 // Follow
 Route::post('/follow', 'FollowController@follow');
 Route::get('/followers/pending', 'FollowController@pending');

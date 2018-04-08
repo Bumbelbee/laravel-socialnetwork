@@ -389,6 +389,7 @@ class ComposerStaticInitd2065ad0fdd3a04f0a0f7590b17de4fb
 
     public static $classMap = array (
         'AddSignInAtToUsers' => __DIR__ . '/../..' . '/database/migrations/2018_02_07_113522_add_sign_in_at_to_users.php',
+        'App\\Community' => __DIR__ . '/../..' . '/app/Community.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\Event' => __DIR__ . '/../..' . '/app/Events/Event.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -511,6 +512,7 @@ class ComposerStaticInitd2065ad0fdd3a04f0a0f7590b17de4fb
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'CreateCitiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_20_133151_create_cities_table.php',
+        'CreateCommunitiesTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_07_120024_create_communities_table.php',
         'CreateCountries' => __DIR__ . '/../..' . '/database/migrations/2017_05_20_133038_create_countries.php',
         'CreateGroupsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_20_133512_create_groups_table.php',
         'CreateHobbiesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_20_133406_create_hobbies_table.php',

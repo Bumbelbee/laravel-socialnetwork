@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddSignInAtToUsers' => $baseDir . '/database/migrations/2018_02_07_113522_add_sign_in_at_to_users.php',
+    'App\\Community' => $baseDir . '/app/Community.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -129,6 +130,7 @@ return array(
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
     'CreateCitiesTable' => $baseDir . '/database/migrations/2017_05_20_133151_create_cities_table.php',
+    'CreateCommunitiesTable' => $baseDir . '/database/migrations/2018_04_07_120024_create_communities_table.php',
     'CreateCountries' => $baseDir . '/database/migrations/2017_05_20_133038_create_countries.php',
     'CreateGroupsTable' => $baseDir . '/database/migrations/2017_05_20_133512_create_groups_table.php',
     'CreateHobbiesTable' => $baseDir . '/database/migrations/2017_05_20_133406_create_hobbies_table.php',

@@ -13,6 +13,12 @@
             </a>
         </li>
         <li class="list-group-item">
+            <a href="{{ url('/community') }}" class="menu-nearby">
+                <i class="fa fa-group"></i>
+                Community
+            </a>
+        </li>
+        <li class="list-group-item">
             <a href="{{ url('/groups') }}" class="menu-groups">
                 <i class="fa fa-users"></i>
                 Groups
