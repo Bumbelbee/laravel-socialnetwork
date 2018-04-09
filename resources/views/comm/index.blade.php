@@ -53,6 +53,15 @@
     </div>
 </div>
 {{-- end of modal window of group creation --}}
+    
+{{-- my community list --}}
+    @foreach($community as $comm)
+    <div class="list-group col-md-5 text-center">
+    <p class="list-group-item list-group-item-action active ">My list of communities</p>
+  <a href="community/{{$comm->title}}" class="list-group-item list-group-item-action">{{$comm->title}}</a>
+</div>
+@endforeach
+{{-- not in community --}}
 <table class="table table-sm table-bordered">
   <thead class="bg-primary">
     <tr >
@@ -63,17 +72,24 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($allow as $allo)
+@if($allo->allow == 0)
 @foreach($community as $comm)
     <tr class="table-primary">
       <td>{{$comm->title}}</td>
       <td >{{$comm->description}}</td>
-      <td>                  <form action="/commfollow" method="get">
+      <td>                  @foreach($allow as $allo)@endforeach
+                            <form action="/commfollow" method="get">
                             <button class="btn btn-primary">follow</button>
                             <input type="hidden" name="title" value="{{$comm->title}}">
+                            <input type="hidden" name="commId" value="{{$comm->id}}">
+                            <input type="hidden" name="userId" value="{{$user->id}}">
                             </form>
-      </td>
+                      </td>
 
     </tr>
+  @endforeach
+  @endif
   @endforeach
  </tbody>
 </table>

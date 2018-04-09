@@ -18,8 +18,9 @@ class CommunityController extends Controller
     public function index()
     {   
         $user = Auth::user();
-        $community = DB::table('communities')->select('title','description')->get();
-        return view('comm.index',compact('user','community'));
+        $community = DB::table('communities')->select('id','title','description')->get();
+        $allow = DB::table('comm_follow')->where('userId', $user->id)->get();
+        return view('comm.index',compact('user','community','allow'));
 
         //
     }
@@ -104,22 +105,27 @@ class CommunityController extends Controller
 
     public function follow(Request $request){
         $title = $request->title;
+        $commId = $request->commId;
+        $userId = $request->userId;
+
+        DB::table('comm_follow')->insert(['userId'=>$userId,'commId'=>$commId]);
+        DB::table('comm_follow')->where(['userId'=>$userId,'commId'=>$commId])->update(['allow' => 1 ]);
+       
         $follow = DB::table('communities')->where('title',$title)->update(['follow' => 1]);
         $follow = DB::table('communities')->where('title',$title)->increment('followers');
         
-        Session::flash('success',"now you follow this community");
-        
+        Session::flash('success',"now you follow this community");  
         return redirect()->route('community.show',$title);
     }
 
     public function unfollow(Request $request){
         $title = $request->title;
-        $unfollow = DB::table('communities')->where('title',$title)->update(['follow' => 0]);
-        
+        $commId = $request->commId;
+        $userId = $request->userId;
+
+        $unfollow = DB::table('communities')->where('title',$title)->update(['follow' => 0]); 
         $unfollow = DB::table('communities')->where('title',$title)->decrement('followers');
-    
-        Session::flash('success',"now you unfollow this community");
-        
+        Session::flash('success',"now you unfollow this community");  
         return redirect()->route('community.show',$title);
     }
 
