@@ -18,6 +18,7 @@ class CreateCommunitiesTable extends Migration
             $table->string('title')->unique();
             $table->string('description');
             $table->string('creator');
+            $table->integer('followers')->unsigned();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 Use DB;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Models\User;
 
 class CommunityController extends Controller
 {
@@ -18,9 +19,11 @@ class CommunityController extends Controller
     public function index()
     {   
         $user = Auth::user();
-        $community = DB::table('communities')->select('id','title','description')->get();
-        $allow = DB::table('comm_follow')->where('userId', $user->id)->get();
-        return view('comm.index',compact('user','community','allow'));
+        $all = DB::table('communities')->select('id','title','description')->get();
+        $communities = User::find($user->id)->communities()->orderBy('title')->get(); 
+       
+        $lastId = Community::find(1)->orderBy('id','Desc')->limit(1)->get();
+        return view('community.index',compact('user','communities','all','lastId'));
 
         //
     }
@@ -30,10 +33,6 @@ class CommunityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {   
-        return view('comm.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -49,6 +48,13 @@ class CommunityController extends Controller
         $community->description = $request->desc;
         $community->creator = $request->creator;
         $community->save();
+
+        // insert creator to followers
+
+        $commId = $request->lastId;
+        $userId = Auth::user()->id;
+        DB::table('community_user')->insert(['user_id'=>$userId,'community_id'=>$commId]);
+        DB::table('communities')->where('title',$community->title)->increment('followers');
         
         return redirect()->route('community.show',$community->title);
     }
@@ -65,8 +71,7 @@ class CommunityController extends Controller
             'new_post_group_id' => 3
         ];
         $community = DB::table('communities')->where('title',$title)->get();
-
-        return view('comm.show',compact('user','community','wall'));
+        return view('community.show',compact('user','community','wall'));
     }
 
     /**
@@ -108,11 +113,8 @@ class CommunityController extends Controller
         $commId = $request->commId;
         $userId = $request->userId;
 
-        DB::table('comm_follow')->insert(['userId'=>$userId,'commId'=>$commId]);
-        DB::table('comm_follow')->where(['userId'=>$userId,'commId'=>$commId])->update(['allow' => 1 ]);
-       
-        $follow = DB::table('communities')->where('title',$title)->update(['follow' => 1]);
-        $follow = DB::table('communities')->where('title',$title)->increment('followers');
+        DB::table('community_user')->insert(['user_id'=>$userId,'community_id'=>$commId]);
+        DB::table('communities')->where('title',$title)->increment('followers');
         
         Session::flash('success',"now you follow this community");  
         return redirect()->route('community.show',$title);
@@ -120,13 +122,13 @@ class CommunityController extends Controller
 
     public function unfollow(Request $request){
         $title = $request->title;
-        $commId = $request->commId;
-        $userId = $request->userId;
+        $comm_id = $request->commId;
+        $user_id = $request->userId;
 
-        $unfollow = DB::table('communities')->where('title',$title)->update(['follow' => 0]); 
-        $unfollow = DB::table('communities')->where('title',$title)->decrement('followers');
-        Session::flash('success',"now you unfollow this community");  
-        return redirect()->route('community.show',$title);
+        DB::table('communities')->where('title',$title)->decrement('followers');
+        DB::table('community_user')->where(['user_id'=>$user_id,'community_id'=>$comm_id]);
+        Session::flash('success',"now you unfollow ~$title~");  
+        return redirect()->route('community.index');
     }
 
 }

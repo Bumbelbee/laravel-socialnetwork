@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Followcomm extends Migration
+class CommunityUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Followcomm extends Migration
      */
     public function up()
     {
-        Schema::create('comm_follow', function (Blueprint $table) {
+        Schema::create('community_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
-            $table->integer('commId');
-            $table->integer('allow')->default(0);
-
+            $table->integer('user_id');
+            $table->integer('community_id');
         });
     }
 
@@ -29,6 +27,6 @@ class Followcomm extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('community_user');
     }
 }

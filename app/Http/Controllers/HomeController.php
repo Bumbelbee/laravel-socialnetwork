@@ -8,6 +8,7 @@ use App\Models\Group;
 use App\Models\Hobby;
 use App\Models\Post;
 use App\Models\User;
+use App\Community;
 use DB;
 use Exception;
 use Illuminate\Http\Request;
@@ -73,7 +74,9 @@ class HomeController extends Controller
 
         $users = User::where('name', 'like', '%'.$s.'%')->orWhere('username', 'like', '%'.$s.'%')->orderBy('name', 'ASC')->get();
 
-        return view('search', compact('users', 'posts', 'user', 'comment_count'));
+        $communities = Community::where('title', 'like', '%'.$s.'%')->orderBy('title', 'ASC')->get();
+
+        return view('search', compact('users', 'posts', 'user', 'comment_count','communities'));
 
     }
 

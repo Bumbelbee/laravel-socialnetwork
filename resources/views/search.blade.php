@@ -10,6 +10,7 @@
                 <ul class="nav nav-pills">
                     <li class="active"><a data-toggle="pill" href="#posts">Posts ({{ $posts->count() }})</a></li>
                     <li><a data-toggle="pill" href="#users">Users ({{ $users->count() }})</a></li>
+                    <li><a data-toggle="pill" href="#communities">Communities ({{ $communities->count() }})</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -39,6 +40,43 @@
 
 
                     </div>
+
+                    {{-- community search --}}
+                    <div id="communities" class="tab-pane fade">
+                        @if($communities->count() == 0)
+
+                            <div class="alert-message alert-message-default col-md-10">
+                                <h4>Not Found !</h4>
+                            </div>
+                        @else
+                                                        <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="bg-primary">
+                                    <th scope="col" class = 'text-center'>Title</th>
+                                    <th scope="col" class = 'text-center'>Description</th>
+                                    <th scope="col" class = 'text-center'>Follow</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                        @foreach ($communities as $community )
+                                    <tr>
+                                    <td class ="col-sm-3">{{ $community->title }}</td>
+                                    <td>{{ $community->description }}</td>
+                                    <td class="col-sm-1">
+                                                                            <form action="/commfollow" method="get">
+                                                                            <button class="btn btn-primary">follow</button>
+                                                                            <input type="hidden" name="title" value="{{$community->title}}">
+                                                                            <input type="hidden" name="commId" value="{{$community->id}}">
+                                                                            <input type="hidden" name="userId" value="{{$user->id}}">
+                                                                            </form>
+                                    </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                </table>
+@endif
+                    </div>
+
                     <!-- search people -->
                     <div id="users" class="tab-pane fade">
 
@@ -46,11 +84,10 @@
 
 
                             <div class="alert-message alert-message-default">
-                                <h4>Not Found !</h4>
-                            </div>
-
-
-                        @else
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  
+  
+                         @else
                             <div class="m-t-20"></div>
                             <div class="row">
                                     @foreach($users as $user_p)

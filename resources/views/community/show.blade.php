@@ -33,25 +33,19 @@
                                 <div class="panel-heading">Created at</div>
                                     <li class="list-group-item">{{$comm->created_at}}</li>
                                 </div>
-                                <div class="panel panel-default">  
+                                <div class="panel panel-default"> 
+
                                 <div class="panel-heading">{{$comm->followers}} people following us
                                   {{-- follow condition   --}}
-                                            @if($comm->follow == 0)
-                                            <form action="/commfollow" method="get" style="padding-top: 10px;">
-                                            <button class="btn btn-primary">follow</button>
-                                            <input type="hidden" name="title" value="{{$comm->title}}">
-                                            <input type="hidden" name="commId" value="{{$comm->id}}">
-                                            <input type="hidden" name="userId" value="{{$user->id}}">
-                                            </form>
-                                            @elseif($comm->follow > 0)
+                                        @if ($user->name != $comm->creator)
                                             <form action="/communfollow" method="get">
                                             <button class="btn btn-primary">unfollow</button>
                                             <input type="hidden" name="title" value="{{$comm->title}}">
                                             <input type="hidden" name="commId" value="{{$comm->id}}">
                                             <input type="hidden" name="userId" value="{{$user->id}}">
                                             </form>
-                                            @endif
-                                    </div>
+                                        @endif
+                                       </div>
                                 </div>
                             </div>
                         </div>

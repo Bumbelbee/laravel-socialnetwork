@@ -12,7 +12,7 @@
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-circle-o"></i> </span>
 
-                    <input id="name" type="text" placeholder="John Doe" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="name" type="text" placeholder="Name" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                 </div>
 
@@ -24,6 +24,26 @@
             </div>
         </div>
 
+    <div class="form-group{{ old('tab') == 'register' && $errors->has('username') ? ' has-error' : '' }} col-md-12">
+            <label for="username" class="control-label">Surname</label>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i> </span>
+
+                    <input id="username" type="text" class="form-control" placeholder="Surname" name="username" value="{{ old('username') }}" required>
+
+                </div>
+                @if (old('tab') == 'register' && $errors->has('username'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('username') }}</strong>
+                </span>
+                @endif
+            </div>
+
+
+        </div>
+    
         <div class="form-group{{ old('tab') == 'register' && $errors->has('email') ? ' has-error' : '' }} col-md-12">
             <label for="email" class="control-label">E-Mail Address</label>
 
@@ -44,25 +64,6 @@
 
         </div>
 
-        <div class="form-group{{ old('tab') == 'register' && $errors->has('username') ? ' has-error' : '' }} col-md-12">
-            <label for="username" class="control-label">Username</label>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i> </span>
-
-                    <input id="username" type="text" class="form-control" placeholder="example" name="username" value="{{ old('username') }}" required>
-
-                </div>
-                @if (old('tab') == 'register' && $errors->has('username'))
-                    <span class="help-block">
-                    <strong>{{ $errors->first('username') }}</strong>
-                </span>
-                @endif
-            </div>
-
-
-        </div>
 
         <div class="form-group{{ old('tab') == 'register' && $errors->has('password') ? ' has-error' : '' }} col-md-12">
             <label for="password" class="control-label">Password</label>

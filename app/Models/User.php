@@ -36,6 +36,10 @@ class User extends Authenticatable
         'birthday'
     ];
 
+    public function communities(){
+        return $this->belongsToMany('App\Community','community_user','user_id','community_id');
+    }
+
     public function location(){
         return $this->hasOne('App\Models\UserLocation', 'user_id', 'id');
     }
