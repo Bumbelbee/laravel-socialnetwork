@@ -1,7 +1,6 @@
-## Laravel 5 - Simple Location-Based Social Network 
+## Laravel 5 - Social Network - DOS 
 
 ### Installation
-* git clone https://github.com/lvntayn/laravel-social-network.git projectname
 * cd projectname
 * composer install
 * php artisan key:generate to regenerate secure key
@@ -23,7 +22,7 @@
 * gmaps (https://github.com/hpneo/gmaps)
 * SerializeJSON (https://github.com/marioizquierdo/jquery.serializeJSON)
 * Select2 (https://github.com/select2/select2)
-
+* Nexmo API
 
 ### Features
 * Create a profile with a username, profile picture, cover picture, bio and personal information
